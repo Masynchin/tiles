@@ -1,9 +1,13 @@
 module Tile
-  ( rotate
+  ( connectsHorizontal
+  , connectsVertical
+  , rotate
   , showTile
   , tile
   )
   where
+
+import Data.Eq ((==))
 
 type Tile =
   { top    :: Boolean
@@ -35,3 +39,9 @@ showTile { top: true, right: true, bottom: true, left: true } = "┼"
 
 rotate :: Tile -> Tile
 rotate { top, right, bottom, left } = { top: left, right: top, bottom: right, left: bottom }
+
+connectsVertical :: Tile -> Tile -> Boolean
+connectsVertical top bottom = top.bottom == bottom.top
+
+connectsHorizontal :: Tile -> Tile -> Boolean
+connectsHorizontal left right = left.right == right.left
