@@ -1,4 +1,7 @@
-module Test.Tile where
+module Test.Tile
+  ( testTile
+  )
+  where
 
 import Prelude
 import Effect (Effect)
@@ -7,8 +10,8 @@ import Test.Unit (suite, test)
 import Test.Unit.Assert (equal)
 import Test.Unit.Main (runTest)
 
-main :: Effect Unit
-main = do
+testTile :: Effect Unit
+testTile = do
   runTest do
     suite "Tile" do
       test "rotates 360" do
@@ -16,5 +19,5 @@ main = do
         equal t (rotate $ rotate $ rotate $ rotate t)
       test "rotates once" do
         let top = tile true false false false
-            left = tile false false false true
-        equal left (rotate top)
+            right = tile false true false false
+        equal right (rotate top)
