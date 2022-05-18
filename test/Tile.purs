@@ -11,7 +11,10 @@ main :: Effect Unit
 main = do
   runTest do
     suite "Tile" do
-      test "rotates" do
+      test "rotates 360" do
+        let t = tile true false true false
         equal t (rotate $ rotate $ rotate $ rotate t)
-        where
-          t = tile true false true false
+      test "rotates once" do
+        let top = tile true false false false
+            left = tile false false false true
+        equal left (rotate top)
