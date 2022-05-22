@@ -4,6 +4,7 @@ module Tile
   , connectsHorizontal
   , connectsVertical
   , empty
+  , intersect
   , left
   , right
   , rotate
@@ -12,7 +13,7 @@ module Tile
   )
   where
 
-import Data.Eq ((==))
+import Prelude
 
 type Tile =
   { top    :: Boolean
@@ -62,3 +63,11 @@ bottom = { top: false, right: false, bottom: true, left: false}
 
 left :: Tile
 left = { top: false, right: false, bottom: false, left: true}
+
+intersect :: Tile -> Tile -> Tile
+intersect t1 t2 =
+  { top: t1.top || t2.top
+  , right: t1.right || t2.right
+  , bottom: t1.bottom || t2.bottom
+  , left: t1.left || t2.left
+  }
