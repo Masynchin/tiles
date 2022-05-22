@@ -1,5 +1,6 @@
 module Tile
-  ( connectsHorizontal
+  ( Tile
+  , connectsHorizontal
   , connectsVertical
   , rotate
   , showTile
