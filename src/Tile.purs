@@ -1,10 +1,14 @@
 module Tile
   ( Tile
+  , bottom
   , connectsHorizontal
   , connectsVertical
+  , empty
+  , left
+  , right
   , rotate
   , showTile
-  , tile
+  , top
   )
   where
 
@@ -16,9 +20,6 @@ type Tile =
   , bottom :: Boolean
   , left   :: Boolean
   }
-
-tile :: Boolean -> Boolean -> Boolean -> Boolean -> Tile
-tile top right bottom left = { top: top, right: right, bottom: bottom, left: left }
 
 showTile :: Tile -> String
 showTile { top: false, right: false, bottom: false, left: false } = " "
@@ -39,10 +40,25 @@ showTile { top: true, right: true, bottom: true, left: false } = "├"
 showTile { top: true, right: true, bottom: true, left: true } = "┼"
 
 rotate :: Tile -> Tile
-rotate { top, right, bottom, left } = { top: left, right: top, bottom: right, left: bottom }
+rotate t = { top: t.left, right: t.top, bottom: t.right, left: t.bottom }
 
 connectsVertical :: Tile -> Tile -> Boolean
-connectsVertical top bottom = top.bottom == bottom.top
+connectsVertical t b = t.bottom == b.top
 
 connectsHorizontal :: Tile -> Tile -> Boolean
-connectsHorizontal left right = left.right == right.left
+connectsHorizontal l r = l.right == r.left
+
+empty :: Tile
+empty = { top: false, right: false, bottom: false, left: false}
+
+top :: Tile
+top = { top: true, right: false, bottom: false, left: false}
+
+right :: Tile
+right = { top: false, right: true, bottom: false, left: false}
+
+bottom :: Tile
+bottom = { top: false, right: false, bottom: true, left: false}
+
+left :: Tile
+left = { top: false, right: false, bottom: false, left: true}

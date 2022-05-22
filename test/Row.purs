@@ -10,13 +10,12 @@ import Test.Unit (suite, test)
 import Test.Unit.Assert (assert)
 import Test.Unit.Main (runTest)
 import Row (row2, rowCompleted)
-import Tile (tile)
+import Tile (empty)
 
 testRow :: Effect Unit
 testRow = do
   runTest do
     suite "Completed" do
       test "on empty" do
-        let empty = tile false false false false
-            row = row2 empty empty
+        let row = row2 empty empty
         assert "yes" (rowCompleted row)
