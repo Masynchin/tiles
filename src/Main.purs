@@ -7,6 +7,4 @@ import Effect.Console (log)
 import Tile (showTile, top)
 
 main :: Effect Unit
-main = log s
-  where
-    s = showTile top
+main = log $ showTile top
