@@ -6,16 +6,23 @@ module Test.Row
 import Prelude
 
 import Effect (Effect)
-import Test.Unit (suite, test)
-import Test.Unit.Assert (assert)
-import Test.Unit.Main (runTest)
 import Row (row2, rowCompleted)
-import Tile (empty)
+import Test.Unit (suite, test)
+import Test.Unit.Assert (assert, assertFalse)
+import Test.Unit.Main (runTest)
+import Tile (empty, left, right)
 
 testRow :: Effect Unit
 testRow = do
   runTest do
     suite "Completed" do
       test "on empty" do
-        let row = row2 empty empty
-        assert "yes" (rowCompleted row)
+        assert "yes" (rowCompleted $ row2 empty empty)
+      test "on left and right" do
+        assert "yes" (rowCompleted $ row2 left right)
+    suite "Incompleted" do
+      test "when one side different" do
+        assertFalse "no" (rowCompleted $ row2 empty left)
+        assertFalse "no" (rowCompleted $ row2 right empty)
+      test "when ends open" do
+        assertFalse "no" (rowCompleted $ row2 left right)
