@@ -3,15 +3,16 @@ module Main.Row
   , row1
   , row2
   , rowCompleted
+  , showRow
   )
   where
 
 import Prelude
 
-import Data.Foldable (and)
+import Data.Foldable (and, foldMap)
 import Data.List.NonEmpty (cons, singleton, snoc, zipWith)
 import Data.List.Types (NonEmptyList)
-import Main.Tile (Tile, connectsHorizontal, empty)
+import Main.Tile (Tile, connectsHorizontal, empty, showTile)
 
 -- | Row of field.
 type FRow = NonEmptyList Tile
@@ -37,3 +38,7 @@ row2 t1 t2 = prependTile t1 $ row1 t2
 -- | Constructor of row of one tile.
 row1 :: Tile -> FRow
 row1 = singleton
+
+-- | String representation of Row.
+showRow :: FRow -> String
+showRow = foldMap showTile
