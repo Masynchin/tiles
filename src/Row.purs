@@ -9,15 +9,14 @@ module Row
 import Prelude
 
 import Data.Foldable (and)
-import Data.List (zipWith)
-import Data.List.NonEmpty (cons, singleton, tail, toList)
+import Data.List.NonEmpty (cons, singleton, snoc, zipWith)
 import Data.List.Types (NonEmptyList)
-import Tile (Tile, connectsHorizontal)
+import Tile (Tile, connectsHorizontal, empty)
 
 type FieldRow = NonEmptyList Tile
 
 rowCompleted :: FieldRow -> Boolean
-rowCompleted row = and $ zipWith connectsHorizontal (toList row) (tail row)
+rowCompleted row = and $ zipWith connectsHorizontal (cons empty row) (snoc row empty)
 
 row2 :: Tile -> Tile -> FieldRow
 row2 t1 t2 = cons t1 $ row1 t2
