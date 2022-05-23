@@ -15,6 +15,7 @@ module Main.Tile
 
 import Prelude
 
+-- | Build block of field.
 type Tile =
   { top    :: Boolean
   , right  :: Boolean
@@ -22,6 +23,7 @@ type Tile =
   , left   :: Boolean
   }
 
+-- | String representation of Tile.
 showTile :: Tile -> String
 showTile { top: false, right: false, bottom: false, left: false } = " "
 showTile { top: false, right: false, bottom: false, left: true } = "╴"
@@ -40,30 +42,39 @@ showTile { top: true, right: true, bottom: false, left: true } = "┴"
 showTile { top: true, right: true, bottom: true, left: false } = "├"
 showTile { top: true, right: true, bottom: true, left: true } = "┼"
 
+-- | Rotate Tile. All edges shifts clockwise.
 rotate :: Tile -> Tile
 rotate t = { top: t.left, right: t.top, bottom: t.right, left: t.bottom }
 
+-- | Is two tiles connects vertically.
 connectsVertical :: Tile -> Tile -> Boolean
 connectsVertical t b = t.bottom == b.top
 
+-- | Is two tiles connects horizontally.
 connectsHorizontal :: Tile -> Tile -> Boolean
 connectsHorizontal l r = l.right == r.left
 
+-- | Tile with no edges.
 empty :: Tile
 empty = { top: false, right: false, bottom: false, left: false}
 
+-- | Tile with top edge.
 top :: Tile
 top = { top: true, right: false, bottom: false, left: false}
 
+-- | Tile with right edge.
 right :: Tile
 right = { top: false, right: true, bottom: false, left: false}
 
+-- | Tile with bottom edge.
 bottom :: Tile
 bottom = { top: false, right: false, bottom: true, left: false}
 
+-- | Tile with left edge.
 left :: Tile
 left = { top: false, right: false, bottom: false, left: true}
 
+-- | New tile of intersection of two others.
 intersect :: Tile -> Tile -> Tile
 intersect t1 t2 =
   { top: t1.top || t2.top
