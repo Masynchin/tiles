@@ -6,8 +6,8 @@ import Effect (Effect)
 import Test.Unit (suite, test)
 import Test.Unit.Assert (assert, assertFalse)
 import Test.Unit.Main (runTest)
-import Column (column2, columnCompleted)
-import Tile (bottom, empty, top)
+import Main.Column (column2, columnCompleted)
+import Main.Tile (bottom, empty, top)
 
 testColumn :: Effect Unit
 testColumn = do

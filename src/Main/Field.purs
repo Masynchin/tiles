@@ -1,4 +1,4 @@
-module Field
+module Main.Field
   ( FieldTiles
   , field1
   , field2
@@ -9,14 +9,14 @@ module Field
 
 import Prelude
 
-import Column (FieldColumn, columnCompleted)
+import Main.Column (FieldColumn, columnCompleted)
 import Data.Foldable (all)
 import Data.List (transpose)
 import Data.List.NonEmpty (cons, cons', fromList, head, singleton, tail, toList)
 import Data.List.Types (NonEmptyList)
 import Data.Maybe (Maybe(..))
 import Data.Traversable (sequence)
-import Row (FieldRow, rowCompleted)
+import Main.Row (FieldRow, rowCompleted)
 
 type FieldTiles = NonEmptyList FieldRow
 

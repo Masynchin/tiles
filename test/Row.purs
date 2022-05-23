@@ -6,11 +6,11 @@ module Test.Row
 import Prelude
 
 import Effect (Effect)
-import Row (row2, rowCompleted)
+import Main.Row (row2, rowCompleted)
 import Test.Unit (suite, test)
 import Test.Unit.Assert (assert, assertFalse)
 import Test.Unit.Main (runTest)
-import Tile (empty, left, right)
+import Main.Tile (empty, left, right)
 
 testRow :: Effect Unit
 testRow = do

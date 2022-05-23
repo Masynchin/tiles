@@ -1,4 +1,4 @@
-module Tile
+module Main.Tile
   ( Tile
   , bottom
   , connectsHorizontal

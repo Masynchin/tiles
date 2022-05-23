@@ -6,12 +6,12 @@ module Test.Field
 import Prelude
 
 import Effect (Effect)
-import Field (field1, field2, transposeN)
-import Row (row1, row2)
+import Main.Field (field1, field2, transposeN)
+import Main.Row (row1, row2)
 import Test.Unit (suite, test)
 import Test.Unit.Assert (equal)
 import Test.Unit.Main (runTest)
-import Tile (bottom, left, right, top)
+import Main.Tile (bottom, left, right, top)
 
 testField :: Effect Unit
 testField = do

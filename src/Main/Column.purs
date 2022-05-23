@@ -1,4 +1,4 @@
-module Column
+module Main.Column
   ( FieldColumn
   , column1
   , column2
@@ -11,7 +11,7 @@ import Prelude
 import Data.Foldable (and)
 import Data.List.NonEmpty (cons, singleton, snoc, zipWith)
 import Data.List.Types (NonEmptyList)
-import Tile (Tile, connectsVertical, empty)
+import Main.Tile (Tile, connectsVertical, empty)
 
 type FieldColumn = NonEmptyList Tile
 

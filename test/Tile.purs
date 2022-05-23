@@ -9,7 +9,7 @@ import Effect (Effect)
 import Test.Unit (suite, test)
 import Test.Unit.Assert (assert, assertFalse, equal)
 import Test.Unit.Main (runTest)
-import Tile (bottom, connectsHorizontal, connectsVertical, empty, intersect, left, right, rotate, top)
+import Main.Tile (bottom, connectsHorizontal, connectsVertical, empty, intersect, left, right, rotate, top)
 
 testTile :: Effect Unit
 testTile = do
