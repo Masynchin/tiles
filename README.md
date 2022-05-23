@@ -5,18 +5,26 @@ until all its edges correctly connects to each other.
 This game highly inspired by
 [Infinite Loop](https://www.youtube.com/watch?v=7TxSeoVM7CE).
 
-## Build
+## Local build
 
-First of all, you need to have [PureScript](https://www.purescript.org)
-and [Spago](https://github.com/purescript/spago).
-
-To run game exec following commands:
+First of all, clone repo:
 
 ~~~shell
 git clone https://github.com/Masynchin/tiles.git
 cd tiles
-spago build
-spago run
+~~~
+
+And install dependencies:
+
+~~~shell
+npm install
+~~~
+
+To run game exec:
+
+~~~shell
+npm run build
+npm run run
 ~~~
 
 ## Tests
@@ -24,5 +32,5 @@ spago run
 To run test exec:
 
 ~~~shell
-spago test
+npm run test
 ~~~
