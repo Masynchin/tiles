@@ -2,6 +2,7 @@ module Main.Row
   ( FRow
   , row1
   , row2
+  , row3
   , rowCompleted
   , showRow
   )
@@ -30,6 +31,9 @@ prependTile = cons
 -- | Add tile to end of row.
 appendTile :: FRow -> Tile -> FRow
 appendTile = snoc
+
+row3 :: Tile -> Tile -> Tile -> FRow
+row3 t1 t2 t3 = prependTile t1 $ row2 t2 t3
 
 -- | Constructor of row of two tiles.
 row2 :: Tile -> Tile -> FRow

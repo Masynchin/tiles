@@ -1,5 +1,6 @@
 module Main.Tile
-  ( Tile
+  ( (∩)
+  , Tile
   , bottom
   , connectsHorizontal
   , connectsVertical
@@ -82,3 +83,5 @@ intersect t1 t2 =
   , bottom: t1.bottom || t2.bottom
   , left: t1.left || t2.left
   }
+
+infixl 5 intersect as ∩
