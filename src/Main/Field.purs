@@ -1,5 +1,5 @@
 module Main.Field
-  ( FieldTiles
+  ( Field
   , field1
   , field2
   , isComplete
@@ -9,21 +9,21 @@ module Main.Field
 
 import Prelude
 
-import Main.Column (FieldColumn, columnCompleted)
+import Main.Column (Column, columnCompleted)
 import Data.Foldable (all)
 import Data.List (transpose)
 import Data.List.NonEmpty (cons, cons', fromList, head, singleton, tail, toList)
 import Data.List.Types (NonEmptyList)
 import Data.Maybe (Maybe(..))
 import Data.Traversable (sequence)
-import Main.Row (FieldRow, rowCompleted)
+import Main.Row (Row, rowCompleted)
 
-type FieldTiles = NonEmptyList FieldRow
+type Field = NonEmptyList Row
 
-isComplete :: FieldTiles -> Boolean
+isComplete :: Field -> Boolean
 isComplete field = (all rowCompleted field) && (all columnCompleted $ columns field)
 
-columns :: FieldTiles -> NonEmptyList FieldColumn
+columns :: Field -> NonEmptyList Column
 columns = transposeN
 
 transposeN :: forall a. NonEmptyList (NonEmptyList a) -> NonEmptyList (NonEmptyList a)
@@ -35,8 +35,8 @@ transposeN xss =
       heads = head <$> xss
       tails = transpose <<< toList $ tail <$> xss
 
-field2 :: FieldRow -> FieldRow -> FieldTiles
+field2 :: Row -> Row -> Field
 field2 r1 r2 = cons r1 $ field1 r2
 
-field1 :: FieldRow -> FieldTiles
+field1 :: Row -> Field
 field1 = singleton

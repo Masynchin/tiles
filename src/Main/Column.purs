@@ -1,5 +1,5 @@
 module Main.Column
-  ( FieldColumn
+  ( Column
   , column1
   , column2
   , columnCompleted
@@ -13,19 +13,19 @@ import Data.List.NonEmpty (cons, singleton, snoc, zipWith)
 import Data.List.Types (NonEmptyList)
 import Main.Tile (Tile, connectsVertical, empty)
 
-type FieldColumn = NonEmptyList Tile
+type Column = NonEmptyList Tile
 
-columnCompleted :: FieldColumn -> Boolean
+columnCompleted :: Column -> Boolean
 columnCompleted col = and $ zipWith connectsVertical (prependTile empty col) (appendTile col empty)
 
-prependTile :: Tile -> FieldColumn -> FieldColumn
+prependTile :: Tile -> Column -> Column
 prependTile = cons
 
-appendTile :: FieldColumn -> Tile -> FieldColumn
+appendTile :: Column -> Tile -> Column
 appendTile = snoc
 
-column2 :: Tile -> Tile -> FieldColumn
+column2 :: Tile -> Tile -> Column
 column2 t1 t2 = prependTile t1 $ column1 t2
 
-column1 :: Tile -> FieldColumn
+column1 :: Tile -> Column
 column1 = singleton
