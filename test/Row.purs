@@ -19,7 +19,7 @@ testRow = do
       test "on empty" do
         assert "yes" (rowCompleted $ row2 empty empty)
       test "on left and right" do
-        assert "yes" (rowCompleted $ row2 left right)
+        assert "yes" (rowCompleted $ row2 right left)
     suite "Incompleted" do
       test "when one side different" do
         assertFalse "no" (rowCompleted $ row2 empty left)
