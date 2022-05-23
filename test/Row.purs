@@ -25,4 +25,6 @@ testRow = do
         assertFalse "no" (rowCompleted $ row2 empty left)
         assertFalse "no" (rowCompleted $ row2 right empty)
       test "when ends open" do
+        assertFalse "no" (rowCompleted $ row2 empty right)
+        assertFalse "no" (rowCompleted $ row2 left empty)
         assertFalse "no" (rowCompleted $ row2 left right)
