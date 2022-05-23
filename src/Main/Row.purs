@@ -1,5 +1,6 @@
 module Main.Row
   ( FRow
+  , rotateTileAt
   , row1
   , row2
   , row3
@@ -11,9 +12,10 @@ module Main.Row
 import Prelude
 
 import Data.Foldable (and, foldMap)
-import Data.List.NonEmpty (cons, singleton, snoc, zipWith)
+import Data.List.NonEmpty (cons, modifyAt, singleton, snoc, zipWith)
 import Data.List.Types (NonEmptyList)
-import Main.Tile (Tile, connectsHorizontal, empty, showTile)
+import Data.Maybe (Maybe(..))
+import Main.Tile (Tile, connectsHorizontal, empty, rotate, showTile)
 
 -- | Row of field.
 type FRow = NonEmptyList Tile
@@ -46,3 +48,10 @@ row1 = singleton
 -- | String representation of Row.
 showRow :: FRow -> String
 showRow = foldMap showTile
+
+-- | Rotate tile with index.
+rotateTileAt :: Int -> FRow -> FRow
+rotateTileAt x row =
+  case modifyAt x rotate row of
+    Just rotated -> rotated
+    Nothing -> row
