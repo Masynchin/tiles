@@ -14,17 +14,17 @@ git clone https://github.com/Masynchin/tiles.git
 cd tiles
 ~~~
 
-And install dependencies:
+Bundle game:
 
 ~~~shell
 npm install
+npm run bundle
 ~~~
 
-To run game exec:
+And run it:
 
 ~~~shell
-npm run build
-npm run run
+open dist/index.html
 ~~~
 
 ## Tests
