@@ -14,10 +14,12 @@
   },
   "scripts": {
     "build": "spago build",
+    "bundle": "spago bundle-app --main=Main --to=dist/main.js --minify",
     "run": "spago run",
     "test": "spago test"
   },
   "devDependencies": {
+    "esbuild": "^0.14.39",
     "purescript": "^0.15.2",
     "spago": "^0.20.9"
   }
