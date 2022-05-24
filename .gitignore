@@ -1,3 +1,6 @@
+# Custom
+dist/main.js
+
 # Dependencies
 .psci_modules
 bower_components
@@ -7,5 +10,6 @@ node_modules
 .psci
 output
 
+# Should be in default gitignore
 .spago/
 .purs-repl
