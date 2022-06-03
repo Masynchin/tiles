@@ -6,12 +6,13 @@ module Test.Field
 import Prelude
 
 import Effect (Effect)
-import Main.Field (field1, field2, rotateFieldTileAt, transposeN)
+import Main.Column (column1, column2)
+import Main.Field (columns, field1, field2, rotateFieldTileAt)
 import Main.Row (row1, row2)
+import Main.Tile (bottom, left, right, top)
 import Test.Unit (suite, test)
 import Test.Unit.Assert (equal)
 import Test.Unit.Main (runTest)
-import Main.Tile (bottom, left, right, top)
 
 testField :: Effect Unit
 testField = do
@@ -20,16 +21,16 @@ testField = do
       suite "Transposes" do
         test "1x2" do
           let field = field2 (row1 top) (row1 bottom)
-              transposed = field1 (row2 top bottom)
-          equal (transposeN field) transposed
+              transposed = field1 (column2 top bottom)
+          equal (columns field) transposed
         test "2x1" do
           let field = field1 (row2 top bottom)
-              transposed = field2 (row1 top) (row1 bottom)
-          equal (transposeN field) transposed
+              transposed = field2 (column1 top) (column1 bottom)
+          equal (columns field) transposed
         test "2x2" do
           let field = field2 (row2 top right) (row2 bottom left)
-              transposed = field2 (row2 top bottom) (row2 right left)
-          equal (transposeN field) transposed
+              transposed = field2 (column2 top bottom) (column2 right left)
+          equal (columns field) transposed
       suite "Rotates tile" do
         test "that in bounds" do
           let field = field2 (row2 top right) (row2 bottom left)

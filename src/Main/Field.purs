@@ -1,5 +1,6 @@
 module Main.Field
   ( Field
+  , columns
   , field1
   , field2
   , isComplete
