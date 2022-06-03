@@ -4,18 +4,16 @@ module Main.Field
   , field2
   , isComplete
   , rotateFieldTileAt
-  , transposeN
   )
   where
 
 import Prelude
 
 import Data.Foldable (all)
-import Data.List (transpose)
-import Data.List.NonEmpty (cons, cons', fromList, head, modifyAt, singleton, tail, toList)
+import Data.List.NonEmpty (cons, modifyAt, singleton)
 import Data.List.Types (NonEmptyList)
 import Data.Maybe (Maybe(..))
-import Data.Traversable (sequence)
+import Extra.NEL (transposeN)
 import Main.Column (FColumn, columnCompleted)
 import Main.Row (FRow, rotateTileAt, rowCompleted)
 
@@ -29,16 +27,6 @@ isComplete field = (all rowCompleted field) && (all columnCompleted $ columns fi
 -- | Columns of field.
 columns :: Field -> NonEmptyList FColumn
 columns = transposeN
-
--- | Transpose for NonEmptyList (NonEmptyList a).
-transposeN :: forall a. NonEmptyList (NonEmptyList a) -> NonEmptyList (NonEmptyList a)
-transposeN xss =
-  case sequence $ fromList <$> tails of
-    Nothing -> singleton heads
-    Just tss -> cons' heads tss
-    where
-      heads = head <$> xss
-      tails = transpose <<< toList $ tail <$> xss
 
 -- | Constructor of field of two rows.
 field2 :: FRow -> FRow -> Field
