@@ -5,7 +5,7 @@ until all its edges correctly connects to each other.
 This game highly inspired by
 [Infinite Loop](https://www.youtube.com/watch?v=7TxSeoVM7CE).
 
-Play it [here](https://masynchin.github.io/tiles/).
+**[Play it online!](https://masynchin.github.io/tiles/)**
 
 ## Local build
 
