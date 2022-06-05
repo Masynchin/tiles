@@ -1,5 +1,7 @@
 # Tiles
 
+[![Test](https://github.com/Masynchin/tiles/workflows/Test/badge.svg?even=push&branch=main)](https://github.com/Masynchin/tiles/actions?query=workflow%3ATest+event%3Apush+branch%3Amain)
+
 Tiles is zen game where you rotate tiles
 until all its edges correctly connects to each other.
 This game highly inspired by
