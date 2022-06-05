@@ -2,6 +2,7 @@ module Main.Column
   ( FColumn
   , column1
   , column2
+  , column3
   , columnCompleted
   )
   where
@@ -29,6 +30,10 @@ prependTile = cons
 -- | Add tile to end of column.
 appendTile :: FColumn -> Tile -> FColumn
 appendTile = snoc
+
+-- | Constructor of column of three tiles.
+column3 :: Tile -> Tile -> Tile -> FColumn
+column3 t1 t2 t3 = prependTile t1 $ column2 t2 t3
 
 -- | Constructor of column of two tiles.
 column2 :: Tile -> Tile -> FColumn
