@@ -1,5 +1,6 @@
 module Main.Edge.Row
-  ( edges2
+  ( ERow
+  , edges2
   , rowFromEdges
   )
   where

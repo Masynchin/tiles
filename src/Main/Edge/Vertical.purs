@@ -7,14 +7,14 @@ module Main.Edge.Vertical
 
 import Prelude
 
-import Main.Tile.Tile (Tile, empty, left, right)
+import Main.Tile.Tile (Tile, bottom, empty, top)
 
 newtype VerticalEdge = VerticalEdge Boolean
 
 topTile :: VerticalEdge -> Tile
-topTile (VerticalEdge true) = right
+topTile (VerticalEdge true) = bottom
 topTile (VerticalEdge false) = empty
 
 bottomTile :: VerticalEdge -> Tile
-bottomTile (VerticalEdge true) = left
+bottomTile (VerticalEdge true) = top
 bottomTile (VerticalEdge false) = empty
