@@ -1,4 +1,4 @@
-module Main.Row
+module Main.Tile.Row
   ( FRow
   , rotateTileAt
   , row1
@@ -16,7 +16,7 @@ import Data.List.NonEmpty (cons, modifyAt, snoc, zipWith)
 import Data.List.Types (NonEmptyList)
 import Data.Maybe (Maybe(..))
 import Extra.NEL (nel1, nel2, nel3)
-import Main.Tile (Tile, connectsHorizontal, empty, rotate, showTile)
+import Main.Tile.Tile (Tile, connectsHorizontal, empty, rotate, showTile)
 
 -- | Row of field.
 type FRow = NonEmptyList Tile

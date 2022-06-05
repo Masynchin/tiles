@@ -1,4 +1,4 @@
-module Main.Column
+module Main.Tile.Column
   ( FColumn
   , column1
   , column2
@@ -13,7 +13,7 @@ import Data.Foldable (and)
 import Data.List.NonEmpty (cons, snoc, zipWith)
 import Data.List.Types (NonEmptyList)
 import Extra.NEL (nel1, nel2, nel3)
-import Main.Tile (Tile, connectsVertical, empty)
+import Main.Tile.Tile (Tile, connectsVertical, empty)
 
 -- | Column of field.
 type FColumn = NonEmptyList Tile

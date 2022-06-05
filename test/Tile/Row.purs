@@ -1,4 +1,4 @@
-module Test.Row
+module Test.Tile.Row
   ( testRow
   )
   where
@@ -6,8 +6,8 @@ module Test.Row
 import Prelude
 
 import Effect (Effect)
-import Main.Row (rotateTileAt, row2, rowCompleted)
-import Main.Tile (empty, left, right, top)
+import Main.Tile.Row (rotateTileAt, row2, rowCompleted)
+import Main.Tile.Tile (empty, left, right, top)
 import Test.Unit (suite, test)
 import Test.Unit.Assert (assert, assertFalse, equal)
 import Test.Unit.Main (runTest)

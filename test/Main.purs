@@ -3,12 +3,12 @@ module Test.Main where
 import Prelude
 
 import Effect (Effect)
-import Test.Column (testColumn)
-import Test.EColumn (testEdgeColumn)
-import Test.ERow (testEdgeRow)
-import Test.Field (testField)
-import Test.Row (testRow)
-import Test.Tile (testTile)
+import Test.Edge.Column (testEdgeColumn)
+import Test.Edge.Row (testEdgeRow)
+import Test.Tile.Column (testColumn)
+import Test.Tile.Field (testField)
+import Test.Tile.Row (testRow)
+import Test.Tile.Tile (testTile)
 
 main :: Effect Unit
 main = do

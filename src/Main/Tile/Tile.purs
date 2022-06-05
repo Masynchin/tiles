@@ -1,4 +1,4 @@
-module Main.Tile
+module Main.Tile.Tile
   ( (∩)
   , Tile
   , bottom

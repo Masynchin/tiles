@@ -9,9 +9,9 @@ import Flame (QuerySelector(..), Html)
 import Flame.Application.NoEffects as FAN
 import Flame.Html.Attribute as HA
 import Flame.Html.Element as HE
-import Main.Field (Field, field2, rotateFieldTileAt)
-import Main.Row (FRow, row3)
-import Main.Tile (Tile, bottom, left, right, showTile, top, (∩))
+import Main.Tile.Field (Field, field2, rotateFieldTileAt)
+import Main.Tile.Row (FRow, row3)
+import Main.Tile.Tile (Tile, bottom, left, right, showTile, top, (∩))
 
 type Model = Field
 

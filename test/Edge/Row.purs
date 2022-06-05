@@ -1,4 +1,4 @@
-module Test.ERow
+module Test.Edge.Row
   ( testEdgeRow
   )
   where
@@ -6,9 +6,10 @@ module Test.ERow
 import Prelude
 
 import Effect (Effect)
-import Main.ERow (HorizontalEdge(..), edges2, rowFromEdges)
-import Main.Row (row3)
-import Main.Tile (empty, left, right, (∩))
+import Main.Edge.Horizontal (HorizontalEdge(..))
+import Main.Edge.Row (edges2, rowFromEdges)
+import Main.Tile.Row (row3)
+import Main.Tile.Tile (empty, left, right, (∩))
 import Test.Unit (suite, test)
 import Test.Unit.Assert (equal)
 import Test.Unit.Main (runTest)

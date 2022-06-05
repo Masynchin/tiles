@@ -1,4 +1,4 @@
-module Main.Field
+module Main.Tile.Field
   ( Field
   , columns
   , field1
@@ -15,8 +15,8 @@ import Data.List.NonEmpty (modifyAt)
 import Data.List.Types (NonEmptyList)
 import Data.Maybe (Maybe(..))
 import Extra.NEL (nel1, nel2, transposeN)
-import Main.Column (FColumn, columnCompleted)
-import Main.Row (FRow, rotateTileAt, rowCompleted)
+import Main.Tile.Column (FColumn, columnCompleted)
+import Main.Tile.Row (FRow, rotateTileAt, rowCompleted)
 
 -- | Field.
 type Field = NonEmptyList FRow

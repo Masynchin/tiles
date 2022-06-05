@@ -1,4 +1,4 @@
-module Test.Field
+module Test.Tile.Field
   ( testField
   )
   where
@@ -6,10 +6,10 @@ module Test.Field
 import Prelude
 
 import Effect (Effect)
-import Main.Column (column1, column2)
-import Main.Field (columns, field1, field2, rotateFieldTileAt)
-import Main.Row (row1, row2)
-import Main.Tile (bottom, left, right, top)
+import Main.Tile.Column (column1, column2)
+import Main.Tile.Field (columns, field1, field2, rotateFieldTileAt)
+import Main.Tile.Row (row1, row2)
+import Main.Tile.Tile (bottom, left, right, top)
 import Test.Unit (suite, test)
 import Test.Unit.Assert (equal)
 import Test.Unit.Main (runTest)

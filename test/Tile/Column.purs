@@ -1,4 +1,4 @@
-module Test.Column where
+module Test.Tile.Column where
 
 import Prelude
 
@@ -6,8 +6,8 @@ import Effect (Effect)
 import Test.Unit (suite, test)
 import Test.Unit.Assert (assert, assertFalse)
 import Test.Unit.Main (runTest)
-import Main.Column (column2, columnCompleted)
-import Main.Tile (bottom, empty, top)
+import Main.Tile.Column (column2, columnCompleted)
+import Main.Tile.Tile (bottom, empty, top)
 
 testColumn :: Effect Unit
 testColumn = do
