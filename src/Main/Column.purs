@@ -10,8 +10,9 @@ module Main.Column
 import Prelude
 
 import Data.Foldable (and)
-import Data.List.NonEmpty (cons, singleton, snoc, zipWith)
+import Data.List.NonEmpty (cons, snoc, zipWith)
 import Data.List.Types (NonEmptyList)
+import Extra.NEL (nel1, nel2, nel3)
 import Main.Tile (Tile, connectsVertical, empty)
 
 -- | Column of field.
@@ -33,12 +34,12 @@ appendTile = snoc
 
 -- | Constructor of column of three tiles.
 column3 :: Tile -> Tile -> Tile -> FColumn
-column3 t1 t2 t3 = prependTile t1 $ column2 t2 t3
+column3 = nel3
 
 -- | Constructor of column of two tiles.
 column2 :: Tile -> Tile -> FColumn
-column2 t1 t2 = prependTile t1 $ column1 t2
+column2 = nel2
 
 -- | Constructor of column of one tile.
 column1 :: Tile -> FColumn
-column1 = singleton
+column1 = nel1

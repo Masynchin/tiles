@@ -3,9 +3,9 @@ module Main.EColumn where
 import Prelude
 
 import Data.List (List(..), (:))
-import Data.List.NonEmpty (NonEmptyList(..), cons, singleton)
+import Data.List.NonEmpty (NonEmptyList(..), cons)
 import Data.NonEmpty ((:|))
-import Extra.NEL (mapFirst)
+import Extra.NEL (mapFirst, nel2)
 import Main.Column (FColumn, column2)
 import Main.Tile (Tile, empty, intersect, left, right)
 
@@ -31,4 +31,4 @@ bottomTile (VerticalEdge true) = left
 bottomTile (VerticalEdge false) = empty
 
 columnEdges2 :: VerticalEdge -> VerticalEdge -> EColumn
-columnEdges2 e1 e2 = cons e1 $ singleton e2
+columnEdges2 = nel2

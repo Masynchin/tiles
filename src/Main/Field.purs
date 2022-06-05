@@ -11,10 +11,10 @@ module Main.Field
 import Prelude
 
 import Data.Foldable (all)
-import Data.List.NonEmpty (cons, modifyAt, singleton)
+import Data.List.NonEmpty (modifyAt)
 import Data.List.Types (NonEmptyList)
 import Data.Maybe (Maybe(..))
-import Extra.NEL (transposeN)
+import Extra.NEL (nel1, nel2, transposeN)
 import Main.Column (FColumn, columnCompleted)
 import Main.Row (FRow, rotateTileAt, rowCompleted)
 
@@ -31,11 +31,11 @@ columns = transposeN
 
 -- | Constructor of field of two rows.
 field2 :: FRow -> FRow -> Field
-field2 r1 r2 = cons r1 $ field1 r2
+field2 = nel2
 
 -- | Constructor of field of one row.
 field1 :: FRow -> Field
-field1 = singleton
+field1 = nel1
 
 -- | Rotate tile with coordinates.
 rotateFieldTileAt :: Int -> Int -> Field -> Field

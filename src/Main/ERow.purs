@@ -8,9 +8,9 @@ module Main.ERow
 import Prelude
 
 import Data.List (List(..), (:))
-import Data.List.NonEmpty (NonEmptyList(..), cons, singleton)
+import Data.List.NonEmpty (NonEmptyList(..), cons)
 import Data.NonEmpty ((:|))
-import Extra.NEL (mapFirst)
+import Extra.NEL (mapFirst, nel2)
 import Main.Row (FRow, row2)
 import Main.Tile (Tile, empty, intersect, left, right)
 
@@ -36,4 +36,4 @@ rightTile (HorizontalEdge true) = left
 rightTile (HorizontalEdge false) = empty
 
 edges2 :: HorizontalEdge -> HorizontalEdge -> ERow
-edges2 e1 e2 = cons e1 $ singleton e2
+edges2 = nel2

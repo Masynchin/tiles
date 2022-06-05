@@ -12,9 +12,10 @@ module Main.Row
 import Prelude
 
 import Data.Foldable (and, foldMap)
-import Data.List.NonEmpty (cons, modifyAt, singleton, snoc, zipWith)
+import Data.List.NonEmpty (cons, modifyAt, snoc, zipWith)
 import Data.List.Types (NonEmptyList)
 import Data.Maybe (Maybe(..))
+import Extra.NEL (nel1, nel2, nel3)
 import Main.Tile (Tile, connectsHorizontal, empty, rotate, showTile)
 
 -- | Row of field.
@@ -35,15 +36,15 @@ appendTile :: FRow -> Tile -> FRow
 appendTile = snoc
 
 row3 :: Tile -> Tile -> Tile -> FRow
-row3 t1 t2 t3 = prependTile t1 $ row2 t2 t3
+row3 = nel3
 
 -- | Constructor of row of two tiles.
 row2 :: Tile -> Tile -> FRow
-row2 t1 t2 = prependTile t1 $ row1 t2
+row2 = nel2
 
 -- | Constructor of row of one tile.
 row1 :: Tile -> FRow
-row1 = singleton
+row1 = nel1
 
 -- | String representation of Row.
 showRow :: FRow -> String
