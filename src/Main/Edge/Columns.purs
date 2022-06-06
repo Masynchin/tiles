@@ -1,5 +1,6 @@
 module Main.Edge.Columns
-  ( edgesColumns2
+  ( EColumns
+  , edgesColumns2
   , edgesColumnsToField
   )
   where

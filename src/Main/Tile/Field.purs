@@ -3,6 +3,8 @@ module Main.Tile.Field
   , columns
   , field1
   , field2
+  , field3
+  , intersectFields
   , isComplete
   , rotateFieldTileAt
   )
@@ -11,12 +13,13 @@ module Main.Tile.Field
 import Prelude
 
 import Data.Foldable (all)
-import Data.List.NonEmpty (modifyAt)
+import Data.List.NonEmpty (modifyAt, zipWith)
 import Data.List.Types (NonEmptyList)
 import Data.Maybe (Maybe(..))
-import Extra.NEL (nel1, nel2, transposeN)
+import Extra.NEL (nel1, nel2, nel3, transposeN)
 import Main.Tile.Column (FColumn, columnCompleted)
 import Main.Tile.Row (FRow, rotateTileAt, rowCompleted)
+import Main.Tile.Tile (intersect)
 
 -- | Field.
 type Field = NonEmptyList FRow
@@ -28,6 +31,10 @@ isComplete field = (all rowCompleted field) && (all columnCompleted $ columns fi
 -- | Columns of field.
 columns :: Field -> NonEmptyList FColumn
 columns = transposeN
+
+-- | Constructor of field of three rows.
+field3 :: FRow -> FRow -> FRow -> Field
+field3 = nel3
 
 -- | Constructor of field of two rows.
 field2 :: FRow -> FRow -> Field
@@ -43,3 +50,7 @@ rotateFieldTileAt x y field =
   case modifyAt y (rotateTileAt x) field of
     Just updated -> updated
     Nothing -> field
+
+-- | Intersect two fields.
+intersectFields :: Field -> Field -> Field
+intersectFields = zipWith (zipWith intersect)

@@ -5,6 +5,7 @@ import Prelude
 import Effect (Effect)
 import Test.Edge.Column (testEdgeColumn)
 import Test.Edge.Columns (testEdgeColumns)
+import Test.Edge.Field (testEdgeField)
 import Test.Edge.Row (testEdgeRow)
 import Test.Edge.Rows (testEdgeRows)
 import Test.Tile.Column (testColumn)
@@ -22,3 +23,4 @@ main = do
   testEdgeColumns
   testEdgeRow
   testEdgeRows
+  testEdgeField

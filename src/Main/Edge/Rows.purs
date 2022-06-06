@@ -1,5 +1,6 @@
 module Main.Edge.Rows
-  ( edgesRows1
+  ( ERows
+  , edgesRows1
   , edgesRows2
   , edgesRowsToField
   )
