@@ -61,19 +61,19 @@ empty = { top: false, right: false, bottom: false, left: false}
 
 -- | Tile with top edge.
 top :: Tile
-top = { top: true, right: false, bottom: false, left: false}
+top = empty { top = true }
 
 -- | Tile with right edge.
 right :: Tile
-right = { top: false, right: true, bottom: false, left: false}
+right = empty { right = true }
 
 -- | Tile with bottom edge.
 bottom :: Tile
-bottom = { top: false, right: false, bottom: true, left: false}
+bottom = empty { bottom = true }
 
 -- | Tile with left edge.
 left :: Tile
-left = { top: false, right: false, bottom: false, left: true}
+left = empty { left = true }
 
 -- | New tile of intersection of two others.
 intersect :: Tile -> Tile -> Tile
