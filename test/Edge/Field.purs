@@ -6,8 +6,8 @@ module Test.Edge.Field
 import Prelude hiding (bottom, top)
 
 import Effect (Effect)
-import Main.Edge.Column (columnEdges3)
-import Main.Edge.Columns (edgesColumns1)
+import Main.Edge.Column (columnEdges1)
+import Main.Edge.Columns (edgesColumns3)
 import Main.Edge.Field (edgeField, toTilesField)
 import Main.Edge.Horizontal (HorizontalEdge(..))
 import Main.Edge.Row (edges2)
@@ -29,8 +29,10 @@ testEdgeField = do
             edgesRows2
               (edges2 (HorizontalEdge false) (HorizontalEdge false))
               (edges2 (HorizontalEdge false) (HorizontalEdge false))) (
-            edgesColumns1
-              (columnEdges3 (VerticalEdge false) (VerticalEdge false) (VerticalEdge false)))
+            edgesColumns3
+              (columnEdges1 (VerticalEdge false))
+              (columnEdges1 (VerticalEdge false))
+              (columnEdges1 (VerticalEdge false)))
             field = field2
               (row3 empty empty empty)
               (row3 empty empty empty)
@@ -40,8 +42,10 @@ testEdgeField = do
             edgesRows2
               (edges2 (HorizontalEdge true) (HorizontalEdge true))
               (edges2 (HorizontalEdge true) (HorizontalEdge true))) (
-            edgesColumns1
-              (columnEdges3 (VerticalEdge true) (VerticalEdge true) (VerticalEdge true)))
+            edgesColumns3
+              (columnEdges1 (VerticalEdge true))
+              (columnEdges1 (VerticalEdge true))
+              (columnEdges1 (VerticalEdge true)))
             field = field2
               (row3 (right <> bottom) (left <> bottom <> right) (left <> bottom))
               (row3 (right <> top) (left <> top <> right) (left <> top))

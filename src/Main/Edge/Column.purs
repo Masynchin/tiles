@@ -1,5 +1,6 @@
 module Main.Edge.Column
   ( EColumn
+  , columnEdges1
   , columnEdges2
   , columnEdges3
   , columnFromEdges
@@ -11,7 +12,7 @@ import Prelude
 import Data.List (List(..), (:))
 import Data.List.NonEmpty (NonEmptyList(..), cons)
 import Data.NonEmpty ((:|))
-import Extra.NEL (mapFirst, nel2, nel3)
+import Extra.NEL (mapFirst, nel1, nel2, nel3)
 import Main.Edge.Vertical (VerticalEdge, bottomTile, topTile)
 import Main.Tile.Column (FColumn, column2)
 
@@ -31,3 +32,6 @@ columnEdges3 = nel3
 
 columnEdges2 :: VerticalEdge -> VerticalEdge -> EColumn
 columnEdges2 = nel2
+
+columnEdges1 :: VerticalEdge -> EColumn
+columnEdges1 = nel1
