@@ -1,6 +1,6 @@
 module Test.Tile.Column where
 
-import Prelude
+import Prelude hiding (bottom, top)
 
 import Effect (Effect)
 import Test.Unit (suite, test)

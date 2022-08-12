@@ -3,7 +3,7 @@ module Test.Edge.Columns
   )
   where
 
-import Prelude
+import Prelude hiding (bottom, top)
 
 import Effect (Effect)
 import Main.Edge.Column (columnEdges2)

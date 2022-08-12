@@ -3,7 +3,7 @@ module Test.Tile.Field
   )
   where
 
-import Prelude
+import Prelude hiding (bottom, top)
 
 import Effect (Effect)
 import Main.Tile.Column (column1, column2)

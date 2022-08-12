@@ -5,7 +5,7 @@ module Main.Edge.Vertical
   )
   where
 
-import Prelude
+import Prelude hiding (bottom, top)
 
 import Main.Tile.Tile (Tile, bottom, empty, top)
 
