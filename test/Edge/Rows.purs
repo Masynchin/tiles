@@ -11,7 +11,7 @@ import Main.Edge.Row (edges2)
 import Main.Edge.Rows (edgesRows2, edgesRowsToField)
 import Main.Tile.Field (field2)
 import Main.Tile.Row (row3)
-import Main.Tile.Tile (empty, left, right, (∩))
+import Main.Tile.Tile (empty, left, right)
 import Test.Unit (suite, test)
 import Test.Unit.Assert (equal)
 import Test.Unit.Main (runTest)
@@ -33,6 +33,6 @@ testEdgeRows = do
               (edges2 (HorizontalEdge true) (HorizontalEdge true))
               (edges2 (HorizontalEdge true) (HorizontalEdge true))
             field = field2
-              (row3 right (left ∩ right) left)
-              (row3 right (left ∩ right) left)
+              (row3 right (left <> right) left)
+              (row3 right (left <> right) left)
         equal (edgesRowsToField edgesRows) field

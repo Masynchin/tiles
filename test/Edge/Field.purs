@@ -15,7 +15,7 @@ import Main.Edge.Rows (edgesRows2)
 import Main.Edge.Vertical (VerticalEdge(..))
 import Main.Tile.Field (field2)
 import Main.Tile.Row (row3)
-import Main.Tile.Tile (empty, bottom, left, right, top, (∩))
+import Main.Tile.Tile (empty, bottom, left, right, top)
 import Test.Unit (suite, test)
 import Test.Unit.Assert (equal)
 import Test.Unit.Main (runTest)
@@ -43,6 +43,6 @@ testEdgeField = do
             edgesColumns1
               (columnEdges3 (VerticalEdge true) (VerticalEdge true) (VerticalEdge true)))
             field = field2
-              (row3 (right ∩ bottom) (left ∩ bottom ∩ right) (left ∩ bottom))
-              (row3 (right ∩ top) (left ∩ top ∩ right) (left ∩ top))
+              (row3 (right <> bottom) (left <> bottom <> right) (left <> bottom))
+              (row3 (right <> top) (left <> top <> right) (left <> top))
         equal (toTilesField edgesField) field

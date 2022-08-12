@@ -11,16 +11,16 @@ import Flame.Html.Attribute as HA
 import Flame.Html.Element as HE
 import Main.Tile.Field (Field, field2, rotateFieldTileAt)
 import Main.Tile.Row (FRow, row3)
-import Main.Tile.Tile (Tile, bottom, left, right, showTile, top, (∩))
+import Main.Tile.Tile (Tile, bottom, left, right, top)
 
 type Model = Field
 
 init :: Model
 init = field2 row row
   where
-    hLeft = top ∩ bottom ∩ right
-    hRight = top ∩ bottom ∩ left
-    iFull = top ∩ bottom
+    hLeft = top <> bottom <> right
+    hRight = top <> bottom <> left
+    iFull = top <> bottom
     row = row3 hLeft hRight iFull
 
 data Message = Rotate Int Int
@@ -40,7 +40,7 @@ renderRow :: Int -> FRow -> Html Message
 renderRow y row = HE.tr_ $ fromFoldable $ mapWithIndex (renderTile y) row
 
 renderTile :: Int -> Int -> Tile -> Html Message
-renderTile y x tile = HE.td [HA.onClick $ Rotate x y] $ HE.text (showTile tile)
+renderTile y x tile = HE.td [HA.onClick $ Rotate x y] $ HE.text (show tile)
 
 main :: Effect Unit
 main = FAN.mount_ (QuerySelector "body") app

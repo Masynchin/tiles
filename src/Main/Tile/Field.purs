@@ -19,7 +19,6 @@ import Data.Maybe (Maybe(..))
 import Extra.NEL (nel1, nel2, nel3, transposeN)
 import Main.Tile.Column (FColumn, columnCompleted)
 import Main.Tile.Row (FRow, rotateTileAt, rowCompleted)
-import Main.Tile.Tile (intersect)
 
 -- | Field.
 type Field = NonEmptyList FRow
@@ -53,4 +52,4 @@ rotateFieldTileAt x y field =
 
 -- | Intersect two fields.
 intersectFields :: Field -> Field -> Field
-intersectFields = zipWith (zipWith intersect)
+intersectFields = zipWith (zipWith append)

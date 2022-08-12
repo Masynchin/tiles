@@ -9,7 +9,7 @@ import Effect (Effect)
 import Test.Unit (suite, test)
 import Test.Unit.Assert (assert, assertFalse, equal)
 import Test.Unit.Main (runTest)
-import Main.Tile.Tile (bottom, connectsHorizontal, connectsVertical, empty, intersect, left, right, rotate, top)
+import Main.Tile.Tile (bottom, connectsHorizontal, connectsVertical, empty, left, right, rotate, top)
 
 testTile :: Effect Unit
 testTile = do
@@ -29,13 +29,13 @@ testTile = do
           assertFalse "no" (connectsVertical top top)
       suite "Intersects" do
         test "with empty" do
-          equal { top: false, right: false, bottom: false, left: false } (intersect empty empty)
-          equal { top: true, right: false, bottom: false, left: false } (intersect empty top)
-          equal { top: true, right: false, bottom: false, left: false } (intersect top empty)
+          equal empty (empty <> empty)
+          equal top (empty <> top)
+          equal top (top <> empty)
         test "when equal" do
-          equal { top: false, right: true, bottom: false, left: false } (intersect right right)
+          equal right (right <> right)
         test "when different" do
-          equal { top: false, right: true, bottom: false, left: true } (intersect left right)
-          equal { top: true, right: false, bottom: false, left: true } (intersect top left)
+          equal (left <> right) (left <> right)
+          equal (top <> left) (top <> left)
         test "three" do
-          equal { top: true, right: true, bottom: true, left: false } (top `intersect` right `intersect` bottom)
+          equal (top <> right <> bottom) (top <> right <> bottom)

@@ -16,7 +16,7 @@ import Data.List.NonEmpty (cons, modifyAt, snoc, zipWith)
 import Data.List.Types (NonEmptyList)
 import Data.Maybe (Maybe(..))
 import Extra.NEL (nel1, nel2, nel3)
-import Main.Tile.Tile (Tile, connectsHorizontal, empty, rotate, showTile)
+import Main.Tile.Tile (Tile, connectsHorizontal, empty, rotate)
 
 -- | Row of field.
 type FRow = NonEmptyList Tile
@@ -48,7 +48,7 @@ row1 = nel1
 
 -- | String representation of Row.
 showRow :: FRow -> String
-showRow = foldMap showTile
+showRow = foldMap show
 
 -- | Rotate tile with index.
 rotateTileAt :: Int -> FRow -> FRow

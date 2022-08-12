@@ -9,7 +9,7 @@ import Effect (Effect)
 import Main.Edge.Horizontal (HorizontalEdge(..))
 import Main.Edge.Row (edges2, rowFromEdges)
 import Main.Tile.Row (row3)
-import Main.Tile.Tile (empty, left, right, (∩))
+import Main.Tile.Tile (empty, left, right)
 import Test.Unit (suite, test)
 import Test.Unit.Assert (equal)
 import Test.Unit.Main (runTest)
@@ -28,5 +28,5 @@ testEdgeRow = do
         equal (rowFromEdges edges) row
       test "on full" do
         let edges = edges2 (HorizontalEdge true) (HorizontalEdge true)
-            row = row3 right (left ∩ right) left
+            row = row3 right (left <> right) left
         equal (rowFromEdges edges) row

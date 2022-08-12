@@ -1,15 +1,12 @@
 module Main.Tile.Tile
-  ( (∩)
-  , Tile
+  ( Tile
   , bottom
   , connectsHorizontal
   , connectsVertical
   , empty
-  , intersect
   , left
   , right
   , rotate
-  , showTile
   , top
   )
   where
@@ -17,71 +14,88 @@ module Main.Tile.Tile
 import Prelude
 
 -- | Build block of field.
-type Tile =
+newtype Tile = Tile
   { top    :: Boolean
   , right  :: Boolean
   , bottom :: Boolean
   , left   :: Boolean
   }
 
--- | String representation of Tile.
-showTile :: Tile -> String
-showTile { top: false, right: false, bottom: false, left: false } = " "
-showTile { top: false, right: false, bottom: false, left: true } = "╴"
-showTile { top: false, right: false, bottom: true, left: false } = "╵"
-showTile { top: false, right: true, bottom: false, left: false } = "╶"
-showTile { top: true, right: false, bottom: false, left: false } = "╷"
-showTile { top: false, right: true, bottom: false, left: true } = "─"
-showTile { top: true, right: false, bottom: true, left: false } = "│"
-showTile { top: false, right: true, bottom: true, left: false } = "┌"
-showTile { top: true, right: true, bottom: false, left: false } = "└"
-showTile { top: false, right: false, bottom: true, left: true } = "┐"
-showTile { top: true, right: false, bottom: false, left: true } = "┘"
-showTile { top: false, right: true, bottom: true, left: true } = "┬"
-showTile { top: true, right: false, bottom: true, left: true } = "┤"
-showTile { top: true, right: true, bottom: false, left: true } = "┴"
-showTile { top: true, right: true, bottom: true, left: false } = "├"
-showTile { top: true, right: true, bottom: true, left: true } = "┼"
+-- | Show for Tile.
+-- |
+-- | Used in web repsentation.
+instance showTile :: Show Tile where
+  show = case _ of
+    Tile { top: false, right: false, bottom: false, left: false } -> " "
+    Tile { top: false, right: false, bottom: false, left: true } -> "╴"
+    Tile { top: false, right: false, bottom: true, left: false } -> "╵"
+    Tile { top: false, right: true, bottom: false, left: false } -> "╶"
+    Tile { top: true, right: false, bottom: false, left: false } -> "╷"
+    Tile { top: false, right: true, bottom: false, left: true } -> "─"
+    Tile { top: true, right: false, bottom: true, left: false } -> "│"
+    Tile { top: false, right: true, bottom: true, left: false } -> "┌"
+    Tile { top: true, right: true, bottom: false, left: false } -> "└"
+    Tile { top: false, right: false, bottom: true, left: true } -> "┐"
+    Tile { top: true, right: false, bottom: false, left: true } -> "┘"
+    Tile { top: false, right: true, bottom: true, left: true } -> "┬"
+    Tile { top: true, right: false, bottom: true, left: true } -> "┤"
+    Tile { top: true, right: true, bottom: false, left: true } -> "┴"
+    Tile { top: true, right: true, bottom: true, left: false } -> "├"
+    Tile { top: true, right: true, bottom: true, left: true } -> "┼"
+
+-- | Equal for Tile
+-- |
+-- | Tiles are equal if all their edges are equal.
+instance eqTile :: Eq Tile where
+  eq (Tile t1) (Tile t2) = eq t1 t2
+
+-- | Semigroup for Tile.
+-- |
+-- | Tile behaves as semigroup in terms of intersection.
+instance semigroupTile :: Semigroup Tile where
+  append (Tile t1) (Tile t2) = Tile
+    { top: t1.top || t2.top
+    , right: t1.right || t2.right
+    , bottom: t1.bottom || t2.bottom
+    , left: t1.left || t2.left
+    }
 
 -- | Rotate Tile. All edges shifts clockwise.
 rotate :: Tile -> Tile
-rotate t = { top: t.left, right: t.top, bottom: t.right, left: t.bottom }
+rotate (Tile t) = Tile { top: t.left, right: t.top, bottom: t.right, left: t.bottom }
 
 -- | Is two tiles connects vertically.
 connectsVertical :: Tile -> Tile -> Boolean
-connectsVertical t b = t.bottom == b.top
+connectsVertical (Tile t) (Tile b) = t.bottom == b.top
 
 -- | Is two tiles connects horizontally.
 connectsHorizontal :: Tile -> Tile -> Boolean
-connectsHorizontal l r = l.right == r.left
+connectsHorizontal (Tile l) (Tile r) = l.right == r.left
+
+-- | Empty record for Tile.
+-- |
+-- | It used for constructing other Tile's
+-- | by changing on of its directions
+-- | like in the `top` or `right`.
+template :: { top :: Boolean , right :: Boolean , bottom :: Boolean , left :: Boolean }
+template = { top: false, right: false, bottom: false, left: false}
 
 -- | Tile with no edges.
 empty :: Tile
-empty = { top: false, right: false, bottom: false, left: false}
+empty = Tile template
 
 -- | Tile with top edge.
 top :: Tile
-top = empty { top = true }
+top = Tile (template { top = true })
 
 -- | Tile with right edge.
 right :: Tile
-right = empty { right = true }
+right = Tile (template { right = true })
 
 -- | Tile with bottom edge.
 bottom :: Tile
-bottom = empty { bottom = true }
+bottom = Tile (template { bottom = true })
 
 -- | Tile with left edge.
 left :: Tile
-left = empty { left = true }
-
--- | New tile of intersection of two others.
-intersect :: Tile -> Tile -> Tile
-intersect t1 t2 =
-  { top: t1.top || t2.top
-  , right: t1.right || t2.right
-  , bottom: t1.bottom || t2.bottom
-  , left: t1.left || t2.left
-  }
-
-infixl 5 intersect as ∩
+left = Tile (template { left = true })
